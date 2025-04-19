@@ -23,3 +23,4 @@
 ![jwt-task](https://github.com/user-attachments/assets/dfa92e90-52ca-4bc9-b7f6-1b396df4948b)
 
 ## 2️⃣ API 명세서
+👉 [Swagger API 명세서](http://43.203.197.204/swagger-ui/index.html)
