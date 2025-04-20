@@ -31,4 +31,6 @@ http://3.36.209.70
 
 # 📌 예정
 - 기능별 예외처리
-- CustomException
+  - CustomException
+  - ErrorCode Enum 클래스로 관리
+- 기능별 테스트 코드 작성
