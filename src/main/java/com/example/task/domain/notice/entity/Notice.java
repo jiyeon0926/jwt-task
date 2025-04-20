@@ -28,4 +28,10 @@ public class Notice extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private User user;
+
+    public Notice(User user, String title, String content) {
+        this.user = user;
+        this.title = title;
+        this.content = content;
+    }
 }
