@@ -21,6 +21,12 @@ public class AdminNoticeController {
 
     private final AdminNoticeService adminNoticeService;
 
+    /**
+     * 공지사항 작성
+     * @param noticeReqDto
+     * @param request
+     * @return 공지사항 응답 DTO, 201 상태코드
+     */
     @PostMapping
     public ResponseEntity<NoticeResDto> createNotice(@Valid @RequestBody NoticeReqDto noticeReqDto, HttpServletRequest request) {
         String bearerToken = request.getHeader(HttpHeaders.AUTHORIZATION);
