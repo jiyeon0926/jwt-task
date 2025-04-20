@@ -20,10 +20,10 @@
   - 공지사항은 인증되지 않은 사용자도 조회할 수 있습니다.
 
 # 🧩 설계
-## 1️⃣ ERD
+### 1️⃣ ERD
 ![jwt-task](https://github.com/user-attachments/assets/dfa92e90-52ca-4bc9-b7f6-1b396df4948b)
 
-## 2️⃣ API 명세서
+### 2️⃣ API 명세서
 👉 [Swagger API 명세서](http://3.36.209.70/swagger-ui/index.html)
 
 # 🚀 배포 주소
