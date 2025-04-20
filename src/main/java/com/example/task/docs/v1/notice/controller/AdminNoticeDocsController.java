@@ -1,8 +1,7 @@
-package com.example.task.docs.user.controller;
+package com.example.task.docs.v1.notice.controller;
 
-import com.example.task.docs.user.UserRole;
-import com.example.task.docs.user.dto.UserSignupReqDto;
-import com.example.task.docs.user.dto.UserSignupResDto;
+import com.example.task.docs.v1.notice.dto.NoticeReqDto;
+import com.example.task.docs.v1.notice.dto.NoticeResDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -16,46 +15,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/api/v1/users")
-@Tag(name = "User", description = "사용자 API")
-public class UserDocsController {
+import java.time.LocalDateTime;
 
-    @PostMapping("/signup")
-    @Operation(summary = "회원가입")
+@RestController
+@RequestMapping("/api/v1/admins/notices")
+@Tag(name = "Admin - Notice", description = "관리자 권한 공지사항 API")
+public class AdminNoticeDocsController {
+
+    @PostMapping
+    @Operation(summary = "공지사항 작성")
     @ApiResponses({
             @ApiResponse(
                     responseCode = "201",
-                    description = "회원가입 성공",
+                    description = "공지사항 작성 성공",
                     content = @Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = UserSignupResDto.class)
+                            schema = @Schema(implementation = NoticeResDto.class)
                     )
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "이메일 또는 별명이 중복일 경우",
+                    description = "잘못된 요청일 경우",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(
                                     example = "{\n" +
                                             "  \"error\": {\n" +
-                                            "    \"code\": \"USER_ALREADY_EXISTS\",\n" +
-                                            "    \"message\": \"이미 가입된 사용자입니다.\"\n" +
+                                            "    \"code\": \"NOTICE_INVALID_INPUT\",\n" +
+                                            "    \"message\": \"유효하지 않은 입력입니다.\"\n" +
                                             "  }\n" +
                                             "}"
                             )
                     )
             )
     })
-    public ResponseEntity<UserSignupResDto> signup(@RequestBody UserSignupReqDto userSignupReqDto) {
-        UserSignupResDto userSignupResDto = new UserSignupResDto();
+    public ResponseEntity<NoticeResDto> createNotice(@RequestBody NoticeReqDto noticeReqDto) {
+        NoticeResDto noticeResDto = new NoticeResDto();
 
-        userSignupResDto.setId(1L);
-        userSignupResDto.setEmail(userSignupReqDto.getEmail());
-        userSignupResDto.setNickname(userSignupReqDto.getNickname());
-        userSignupResDto.setRole(UserRole.USER.name());
+        noticeResDto.setId(1L);
+        noticeResDto.setTitle(noticeReqDto.getTitle());
+        noticeResDto.setContent(noticeReqDto.getContent());
 
-        return new ResponseEntity<>(userSignupResDto, HttpStatus.CREATED);
+        LocalDateTime now = LocalDateTime.now();
+        noticeResDto.setCreatedAt(now);
+        noticeResDto.setUpdatedAt(now);
+
+        return new ResponseEntity<>(noticeResDto, HttpStatus.CREATED);
     }
 }

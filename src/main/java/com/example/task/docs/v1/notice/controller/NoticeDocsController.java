@@ -1,6 +1,6 @@
-package com.example.task.docs.notice.controller;
+package com.example.task.docs.v1.notice.controller;
 
-import com.example.task.docs.notice.dto.NoticeResDto;
+import com.example.task.docs.v1.notice.dto.NoticeResDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

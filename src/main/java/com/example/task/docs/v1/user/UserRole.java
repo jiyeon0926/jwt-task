@@ -1,4 +1,4 @@
-package com.example.task.docs.user;
+package com.example.task.docs.v1.user;
 
 public enum UserRole {
     USER,

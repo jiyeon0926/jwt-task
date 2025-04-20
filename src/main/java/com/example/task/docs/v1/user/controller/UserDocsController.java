@@ -1,7 +1,8 @@
-package com.example.task.docs.user.controller;
+package com.example.task.docs.v1.user.controller;
 
-import com.example.task.docs.user.dto.AuthReqDto;
-import com.example.task.docs.user.dto.AuthResDto;
+import com.example.task.docs.v1.user.UserRole;
+import com.example.task.docs.v1.user.dto.UserSignupReqDto;
+import com.example.task.docs.v1.user.dto.UserSignupResDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -16,43 +17,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
-@Tag(name = "Auth", description = "로그인 API")
-public class AuthDocsController {
+@RequestMapping("/api/v1/users")
+@Tag(name = "User", description = "사용자 API")
+public class UserDocsController {
 
-    @PostMapping("/login")
-    @Operation(summary = "로그인")
+    @PostMapping("/signup")
+    @Operation(summary = "회원가입")
     @ApiResponses({
             @ApiResponse(
-                    responseCode = "200",
-                    description = "로그인 성공",
+                    responseCode = "201",
+                    description = "회원가입 성공",
                     content = @Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = AuthResDto.class)
+                            schema = @Schema(implementation = UserSignupResDto.class)
                     )
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "잘못된 요청일 경우",
+                    description = "이메일 또는 별명이 중복일 경우",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(
                                     example = "{\n" +
                                             "  \"error\": {\n" +
-                                            "    \"code\": \"INVALID_CREDENTIALS\",\n" +
-                                            "    \"message\": \"이메일 또는 비밀번호가 일치하지 않습니다.\"\n" +
+                                            "    \"code\": \"USER_ALREADY_EXISTS\",\n" +
+                                            "    \"message\": \"이미 가입된 사용자입니다.\"\n" +
                                             "  }\n" +
                                             "}"
                             )
                     )
             )
     })
-    public ResponseEntity<AuthResDto> login(@RequestBody AuthReqDto authReqDto) {
-        AuthResDto authResDto = new AuthResDto();
+    public ResponseEntity<UserSignupResDto> signup(@RequestBody UserSignupReqDto userSignupReqDto) {
+        UserSignupResDto userSignupResDto = new UserSignupResDto();
 
-        authResDto.setTokenAuthScheme("Bearer");
-        authResDto.setAccessToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBuYXZlci5jb20iLCJpYXQiOj");
+        userSignupResDto.setId(1L);
+        userSignupResDto.setEmail(userSignupReqDto.getEmail());
+        userSignupResDto.setNickname(userSignupReqDto.getNickname());
+        userSignupResDto.setRole(UserRole.USER.name());
 
-        return new ResponseEntity<>(authResDto, HttpStatus.OK);
+        return new ResponseEntity<>(userSignupResDto, HttpStatus.CREATED);
     }
 }

@@ -1,7 +1,7 @@
-package com.example.task.docs.notice.controller;
+package com.example.task.docs.v1.user.controller;
 
-import com.example.task.docs.notice.dto.NoticeReqDto;
-import com.example.task.docs.notice.dto.NoticeResDto;
+import com.example.task.docs.v1.user.dto.AuthReqDto;
+import com.example.task.docs.v1.user.dto.AuthResDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,22 +15,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-
 @RestController
-@RequestMapping("/api/v1/admins/notices")
-@Tag(name = "Admin - Notice", description = "관리자 권한 공지사항 API")
-public class AdminNoticeDocsController {
+@RequestMapping("/api/v1")
+@Tag(name = "Auth", description = "로그인 API")
+public class AuthDocsController {
 
-    @PostMapping
-    @Operation(summary = "공지사항 작성")
+    @PostMapping("/login")
+    @Operation(summary = "로그인")
     @ApiResponses({
             @ApiResponse(
-                    responseCode = "201",
-                    description = "공지사항 작성 성공",
+                    responseCode = "200",
+                    description = "로그인 성공",
                     content = @Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = NoticeResDto.class)
+                            schema = @Schema(implementation = AuthResDto.class)
                     )
             ),
             @ApiResponse(
@@ -41,25 +39,20 @@ public class AdminNoticeDocsController {
                             schema = @Schema(
                                     example = "{\n" +
                                             "  \"error\": {\n" +
-                                            "    \"code\": \"NOTICE_INVALID_INPUT\",\n" +
-                                            "    \"message\": \"유효하지 않은 입력입니다.\"\n" +
+                                            "    \"code\": \"INVALID_CREDENTIALS\",\n" +
+                                            "    \"message\": \"이메일 또는 비밀번호가 일치하지 않습니다.\"\n" +
                                             "  }\n" +
                                             "}"
                             )
                     )
             )
     })
-    public ResponseEntity<NoticeResDto> createNotice(@RequestBody NoticeReqDto noticeReqDto) {
-        NoticeResDto noticeResDto = new NoticeResDto();
+    public ResponseEntity<AuthResDto> login(@RequestBody AuthReqDto authReqDto) {
+        AuthResDto authResDto = new AuthResDto();
 
-        noticeResDto.setId(1L);
-        noticeResDto.setTitle(noticeReqDto.getTitle());
-        noticeResDto.setContent(noticeReqDto.getContent());
+        authResDto.setTokenAuthScheme("Bearer");
+        authResDto.setAccessToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBuYXZlci5jb20iLCJpYXQiOj");
 
-        LocalDateTime now = LocalDateTime.now();
-        noticeResDto.setCreatedAt(now);
-        noticeResDto.setUpdatedAt(now);
-
-        return new ResponseEntity<>(noticeResDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(authResDto, HttpStatus.OK);
     }
 }

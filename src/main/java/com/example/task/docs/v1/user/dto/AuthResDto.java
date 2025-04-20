@@ -1,4 +1,4 @@
-package com.example.task.docs.user.dto;
+package com.example.task.docs.v1.user.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;

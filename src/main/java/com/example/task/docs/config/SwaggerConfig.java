@@ -19,10 +19,10 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public GroupedOpenApi docsApi() {
+    public GroupedOpenApi v1Api() {
         return GroupedOpenApi.builder()
-                .group("docs")
-                .packagesToScan("com.example.task.docs")
+                .group("v1")
+                .packagesToScan("com.example.task.docs.v1")
                 .build();
     }
 }

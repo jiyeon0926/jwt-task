@@ -1,9 +1,9 @@
-package com.example.task.docs.user.controller;
+package com.example.task.docs.v1.user.controller;
 
-import com.example.task.docs.user.UserRole;
-import com.example.task.docs.user.dto.AdminSignupReqDto;
-import com.example.task.docs.user.dto.AdminSignupResDto;
-import com.example.task.docs.user.dto.UserResDto;
+import com.example.task.docs.v1.user.UserRole;
+import com.example.task.docs.v1.user.dto.AdminSignupReqDto;
+import com.example.task.docs.v1.user.dto.AdminSignupResDto;
+import com.example.task.docs.v1.user.dto.UserResDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
