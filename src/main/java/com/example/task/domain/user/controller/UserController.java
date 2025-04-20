@@ -3,7 +3,6 @@ package com.example.task.domain.user.controller;
 import com.example.task.domain.user.dto.SignupReqDto;
 import com.example.task.domain.user.dto.SignupResDto;
 import com.example.task.domain.user.service.UserService;
-import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Hidden
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
