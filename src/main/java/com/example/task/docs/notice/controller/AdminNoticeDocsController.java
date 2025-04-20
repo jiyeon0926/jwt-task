@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/admins/notices")
+@RequestMapping("/api/v1/admins/notices")
 @Tag(name = "Admin - Notice", description = "관리자 권한 공지사항 API")
-public class AdminNoticeController {
+public class AdminNoticeDocsController {
 
     @PostMapping
     @Operation(summary = "공지사항 작성")

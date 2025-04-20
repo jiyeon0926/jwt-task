@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 @Tag(name = "User", description = "사용자 API")
-public class UserController {
+public class UserDocsController {
 
     @PostMapping("/signup")
     @Operation(summary = "회원가입")

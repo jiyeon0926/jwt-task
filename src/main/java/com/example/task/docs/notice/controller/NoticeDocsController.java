@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/notices")
+@RequestMapping("/api/v1/notices")
 @Tag(name = "Notice", description = "공지사항 API")
-public class NoticeController {
+public class NoticeDocsController {
 
     @GetMapping
     @Operation(summary = "공지사항 전체 조회")

@@ -16,9 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/admins")
+@RequestMapping("/api/v1/admins")
 @Tag(name = "Admin", description = "관리자 API")
-public class AdminController {
+public class AdminDocsController {
 
     @PostMapping("/signup")
     @Operation(summary = "관리자 회원가입")
