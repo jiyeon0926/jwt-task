@@ -21,7 +21,7 @@
 
 # 🧩 설계
 ### 1️⃣ ERD
-![jwt-task](https://github.com/user-attachments/assets/dfa92e90-52ca-4bc9-b7f6-1b396df4948b)
+![jwt-task](https://github.com/user-attachments/assets/5ae215a1-5f77-4f7e-a4c5-f77cd2178e8e)
 
 ### 2️⃣ API 명세서
 👉 [Swagger API 명세서](http://3.36.209.70/swagger-ui/index.html)
