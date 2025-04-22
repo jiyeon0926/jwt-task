@@ -28,9 +28,3 @@
 
 # 🚀 배포 주소
 http://3.36.209.70
-
-# 📌 예정
-- 기능별 예외처리
-  - CustomException
-  - ErrorCode Enum 클래스로 관리
-- 기능별 테스트 코드 작성
