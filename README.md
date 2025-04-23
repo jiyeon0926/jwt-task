@@ -24,7 +24,6 @@
 ![jwt-task](https://github.com/user-attachments/assets/5ae215a1-5f77-4f7e-a4c5-f77cd2178e8e)
 
 ### 2️⃣ API 명세서
-👉 [Swagger API 명세서](http://3.36.209.70/swagger-ui/index.html)
+~~👉 [Swagger API 명세서](http://3.36.209.70/swagger-ui/index.html)~~
 
-# 🚀 배포 주소
-http://3.36.209.70
+* 과제 채점이 끝나서 AWS EC2 서버 내린 상태
